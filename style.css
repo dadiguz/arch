@@ -215,7 +215,7 @@ button { font-family: inherit; cursor: pointer; }
   grid-template-columns: 58% 42%;
   background: var(--cream-2);
   overflow: hidden;
-  min-height: clamp(420px, 58vh, 660px);
+  min-height: clamp(386px, 58vh, 626px);
 }
 
 @media (max-width: 700px) {
@@ -880,6 +880,7 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
+  position: relative;
   max-width: 1400px;
   margin-inline: auto;
 }
@@ -897,6 +898,30 @@ button { font-family: inherit; cursor: pointer; }
   color: rgba(250, 247, 240, .22);
   letter-spacing: .04em;
 }
+.footer__credit {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 240, .5);
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.footer__coffee {
+  color: var(--mango);
+  flex-shrink: 0;
+}
+.footer__credit-link {
+  color: var(--mango);
+  text-decoration: none;
+  letter-spacing: .14em;
+  transition: opacity var(--t-fast);
+}
+.footer__credit-link:hover { color: var(--bridesmaid); opacity: 1; }
+
 .footer__nav {
   display: flex;
   gap: 2rem;
