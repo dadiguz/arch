@@ -23,7 +23,7 @@
   --f-display:  'Cormorant Garamond', Georgia, serif;
   --f-body:     'DM Sans', system-ui, -apple-system, sans-serif;
 
-  --gap:        0.5rem;
+  --gap:        1.25rem;
   --nav-h:      68px;
 
   --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -76,6 +76,7 @@ button { font-family: inherit; cursor: pointer; }
    NAV — hidden at top, slides in on scroll
    ══════════════════════════════════════════════════════════════ */
 .nav {
+  display: none; /* hidden for now — re-enable when needed */
   position: fixed;
   inset-block-start: 0;
   inset-inline: 0;
@@ -197,7 +198,7 @@ button { font-family: inherit; cursor: pointer; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gap);
-  padding: var(--gap);
+  padding: clamp(1.25rem, 4vw, 3rem);
 }
 
 @media (max-width: 640px) {
@@ -214,7 +215,7 @@ button { font-family: inherit; cursor: pointer; }
   grid-template-columns: 58% 42%;
   background: var(--cream-2);
   overflow: hidden;
-  min-height: clamp(440px, 60vh, 680px);
+  min-height: clamp(420px, 58vh, 660px);
 }
 
 @media (max-width: 700px) {
@@ -233,6 +234,15 @@ button { font-family: inherit; cursor: pointer; }
   gap: 1.75rem;
   position: relative;
   border-left: 4px solid var(--squash);
+}
+
+.about-card__name {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--bridesmaid);
+  line-height: 1;
 }
 
 .about-card__label-row {
@@ -265,7 +275,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .about-card__heading em {
   font-style: italic;
-  color: var(--ink);
+  color: var(--bridesmaid);
 }
 
 .about-card__bio {
@@ -299,45 +309,41 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1;
 }
 
-/* ── Visual column ── */
+/* ── Visual column — purely position-relative, children are absolute ── */
 .about-card__visual {
   background: var(--cream-3);
   position: relative;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
   overflow: hidden;
 }
 
 @media (max-width: 700px) {
   .about-card__visual {
-    min-height: 400px;
+    min-height: 420px;
     order: -1;
   }
 }
 
-/* Squash decorative block — top-right, behind photo */
+/* Squash accent block — top-right, behind everything */
 .about-card__accent {
   position: absolute;
   inset-block-start: 0;
   inset-inline-end: 0;
-  width: 60%;
-  height: 35%;
+  width: 62%;
+  height: 38%;
   background: var(--squash);
-  opacity: .4;
+  opacity: .45;
   z-index: 0;
   pointer-events: none;
 }
 
-/* Photo: contained block, NOT full bleed */
+/* Photo: fills visual column with inset, bottom space for logo overlap */
 .about-card__photo-wrap {
-  position: relative;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  left: 1.5rem;
+  bottom: 2.5rem;     /* logo will rise from here upward into photo */
   z-index: 1;
-  width: 100%;
-  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 .about-card__photo {
@@ -348,19 +354,20 @@ button { font-family: inherit; cursor: pointer; }
   display: block;
 }
 
-/* Logo below photo */
+/* Logo: big, absolutely positioned, overlaps the photo bottom (magazine collage) */
 .about-card__logo {
-  position: relative;
-  z-index: 1;
-  width: clamp(130px, 18vw, 200px);
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.75rem;
+  width: clamp(230px, 42vw, 400px);
   height: auto;
-  mix-blend-mode: multiply;
+  z-index: 3;
   pointer-events: none;
-  align-self: flex-start;
 }
 
 @media (max-width: 700px) {
-  .about-card__logo { width: 120px; }
+  .about-card__photo-wrap { bottom: 3rem; }
+  .about-card__logo { width: clamp(160px, 55vw, 260px); }
 }
 
 
@@ -368,15 +375,20 @@ button { font-family: inherit; cursor: pointer; }
    PROJECT CARDS — shared base
    ══════════════════════════════════════════════════════════════ */
 
-/* All project cards share this base */
+/* All project cards share this base — fixed height for editorial grid consistency */
 .pc {
   cursor: pointer;
   overflow: hidden;
-  min-height: 400px;
+  height: clamp(440px, 56vh, 560px);
   position: relative;
   transition: outline var(--t-fast);
   outline: 2px solid transparent;
   outline-offset: 0;
+}
+
+@media (max-width: 640px) {
+  /* On mobile (single column) let height be content-driven */
+  .pc { height: auto; min-height: 380px; }
 }
 
 /* Hover: volcanic border on every card */
@@ -464,9 +476,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pc--01__title {
   font-family: var(--f-display);
-  font-size: 1.9rem;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--ink);
   transition: color var(--t);
 }
@@ -501,10 +513,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pc--02__title {
   font-family: var(--f-display);
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
   font-weight: 300;
   font-style: italic;
-  line-height: 1.05;
+  line-height: 1.02;
   color: var(--ink);
   transition: color var(--t);
 }
@@ -618,9 +630,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pc--03__title {
   font-family: var(--f-display);
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-size: clamp(1.7rem, 2.8vw, 2.3rem);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--ink);
   text-align: left;
   transition: color var(--t);
@@ -685,9 +697,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pc--04__title {
   font-family: var(--f-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(3rem, 6.5vw, 5.2rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.0;
   color: var(--cream);
   padding-block: .5rem;
 }
@@ -744,7 +756,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pc--05__num {
   font-family: var(--f-display);
-  font-size: 5rem;
+  font-size: clamp(5rem, 9vw, 7.5rem);
   font-weight: 700;
   line-height: .8;
   color: var(--volcanic);
@@ -753,9 +765,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pc--05__title {
   font-family: var(--f-display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--ink);
   margin-block-start: auto;
 }
@@ -804,9 +816,9 @@ button { font-family: inherit; cursor: pointer; }
 
 .pc--06__title {
   font-family: var(--f-display);
-  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
   font-weight: 700;
-  line-height: .9;
+  line-height: .88;
   color: var(--ink);
   align-self: center;
   transition: color var(--t);
@@ -1019,7 +1031,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 300;
   line-height: 1.05;
-  color: var(--ink);
+  color: var(--bridesmaid);
 }
 .modal__desc {
   font-size: clamp(.875rem, 1.4vw, 1rem);
