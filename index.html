@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paulina Osuna — Architecture & Lighting Design</title>
+  <meta name="description" content="Paulina Osuna — Architect with Mexican roots and training, specializing in lighting design and interior architecture. Tijuana, México.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV — hidden at top, slides in on scroll -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" aria-label="Paulina Osuna — Home">
+        <img src="assets/logo.png" alt="Paulina Osuna" width="86" height="30">
+      </a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks" role="list">
+        <li><a href="#work"  class="nav__link">Work</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE GRID — every card is a peer in the grid -->
+  <main class="grid" id="about">
+
+    <!-- ══════════════════════════════════════════════
+         ABOUT CARD — full width, editorial collage
+         ══════════════════════════════════════════════ -->
+    <article class="about-card reveal-up">
+
+      <!-- Left: text column -->
+      <div class="about-card__text">
+        <div class="about-card__label-row">
+          <span class="about-card__label">About Me</span>
+          <span class="about-card__label-rule" aria-hidden="true"></span>
+        </div>
+
+        <h1 class="about-card__heading">
+          Architect<br>with Mexican<br><em>molding.</em>
+        </h1>
+
+        <div class="about-card__bio">
+          <p>I'm an architect with Mexican roots and training. My identity lies in the cultural aspects of growing up with two countries to call home.</p>
+          <p>Those factors molded me and defined my architectural style. Dualism and bilingualism are things I've engrained and take pride in.</p>
+          <p>Creating a rich ambiance — finding a balance between the constructed space, its surroundings and context — is what I believe makes any architectonic work complete.</p>
+        </div>
+
+        <div class="about-card__meta">
+          <span>Tijuana, México</span>
+          <span class="about-card__dot" aria-hidden="true">·</span>
+          <span>Architect &amp; Lighting Designer</span>
+        </div>
+      </div>
+
+      <!-- Right: visual column (photo + logo + accent block) -->
+      <div class="about-card__visual">
+        <div class="about-card__accent" aria-hidden="true"></div>
+        <div class="about-card__photo-wrap">
+          <img
+            src="photos/_DSF1833.jpg"
+            alt="Paulina Osuna"
+            class="about-card__photo"
+            loading="eager"
+            width="560" height="720"
+          >
+        </div>
+        <img
+          src="assets/logo.png"
+          alt=""
+          class="about-card__logo"
+          aria-hidden="true"
+          loading="eager"
+          width="220" height="76"
+        >
+      </div>
+
+    </article>
+
+    <!-- ══════════════════════════════════════════════
+         PROJECT CARDS — id="work" anchor on first card
+         ══════════════════════════════════════════════ -->
+
+    <!-- 01 · Long Play Record Store — STACKED layout -->
+    <article
+      class="pc pc--01 reveal-up"
+      style="--delay:.05s"
+      data-index="0"
+      role="button"
+      tabindex="0"
+      aria-label="Open project: Long Play Record Store"
+      id="work"
+    >
+      <header class="pc--01__header">
+        <span class="pc--01__cat">Lighting Design</span>
+        <span class="pc--01__num">01</span>
+      </header>
+      <div class="pc-img pc--01__img">
+        <img
+          src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=900&q=75"
+          alt="Long Play Record Store"
+          loading="lazy" width="900" height="675"
+        >
+      </div>
+      <footer class="pc--01__footer">
+        <div class="pc--01__rule" aria-hidden="true"></div>
+        <h2 class="pc--01__title">Long Play / Record Store</h2>
+      </footer>
+    </article>
+
+    <!-- 02 · Transmisiones González — TITLE-FIRST layout -->
+    <article
+      class="pc pc--02 reveal-up"
+      style="--delay:.1s"
+      data-index="1"
+      role="button"
+      tabindex="0"
+      aria-label="Open project: Transmisiones González"
+    >
+      <div class="pc--02__top">
+        <h2 class="pc--02__title">Transmisiones<br>González</h2>
+        <div class="pc--02__rule" aria-hidden="true"></div>
+      </div>
+      <div class="pc--02__spacer" aria-hidden="true"></div>
+      <div class="pc--02__bottom">
+        <div class="pc-img pc--02__img">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=75"
+            alt="Transmisiones González"
+            loading="lazy" width="900" height="675"
+          >
+        </div>
+        <div class="pc--02__side">
+          <span class="pc--02__num">02</span>
+          <span class="pc--02__cat">Lighting Design</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 · Mariscos Playa Azul — SIDE SPLIT layout -->
+    <article
+      class="pc pc--03 reveal-up"
+      style="--delay:.05s"
+      data-index="2"
+      role="button"
+      tabindex="0"
+      aria-label="Open project: Mariscos Playa Azul"
+    >
+      <div class="pc-img pc--03__img">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=75"
+          alt="Mariscos Playa Azul"
+          loading="lazy" width="900" height="675"
+        >
+      </div>
+      <div class="pc--03__info">
+        <span class="pc--03__num">03</span>
+        <h2 class="pc--03__title">Mariscos / Playa Azul</h2>
+        <span class="pc--03__cat">Lighting &amp; Interior Design</span>
+        <div class="pc--03__accent" aria-hidden="true"></div>
+      </div>
+    </article>
+
+    <!-- 04 · TJ Water — DARK EDITORIAL layout -->
+    <article
+      class="pc pc--04 reveal-up"
+      style="--delay:.1s"
+      data-index="3"
+      role="button"
+      tabindex="0"
+      aria-label="Open project: TJ Water"
+    >
+      <div class="pc--04__row-index">
+        <span class="pc--04__num">04</span>
+      </div>
+      <div class="pc--04__row-title">
+        <div class="pc--04__rule" aria-hidden="true"></div>
+        <h2 class="pc--04__title">TJ Water</h2>
+        <div class="pc--04__rule" aria-hidden="true"></div>
+      </div>
+      <div class="pc-img pc--04__img">
+        <img
+          src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=75"
+          alt="TJ Water"
+          loading="lazy" width="900" height="675"
+        >
+      </div>
+      <div class="pc--04__row-cat">
+        <span class="pc--04__cat">Lighting Design</span>
+      </div>
+    </article>
+
+    <!-- 05 · AG Airbnb — SIDE SPLIT REVERSED on Squash bg -->
+    <article
+      class="pc pc--05 reveal-up"
+      style="--delay:.05s"
+      data-index="4"
+      role="button"
+      tabindex="0"
+      aria-label="Open project: AG Airbnb"
+    >
+      <div class="pc--05__info">
+        <span class="pc--05__num">05</span>
+        <h2 class="pc--05__title">AG Airbnb</h2>
+        <span class="pc--05__cat">Lighting Design</span>
+      </div>
+      <div class="pc-img pc--05__img">
+        <img
+          src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=75"
+          alt="AG Airbnb"
+          loading="lazy" width="900" height="675"
+        >
+      </div>
+    </article>
+
+    <!-- 06 · Casa Paulina — OVERSIZED TYPE layout -->
+    <article
+      class="pc pc--06 reveal-up"
+      style="--delay:.1s"
+      data-index="5"
+      role="button"
+      tabindex="0"
+      aria-label="Open project: Casa Paulina"
+    >
+      <div class="pc--06__top">
+        <h2 class="pc--06__title">Casa /<br>Paulina</h2>
+        <div class="pc-img pc--06__img">
+          <img
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=75"
+            alt="Casa Paulina"
+            loading="lazy" width="900" height="675"
+          >
+        </div>
+      </div>
+      <div class="pc--06__bottom">
+        <span class="pc--06__cat">Architecture &amp; Lighting Design</span>
+        <span class="pc--06__num">06</span>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="#" class="footer__logo" aria-label="Back to top">
+        <img src="assets/logo.png" alt="Paulina Osuna" width="60" height="21">
+      </a>
+      <p class="footer__copy">© 2026 Paulina Osuna</p>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__box">
+      <button class="modal__close" id="modalClose" aria-label="Close project">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="modal__inner">
+        <div class="modal__media">
+          <img class="modal__img" id="modalImg" src="" alt="">
+        </div>
+        <div class="modal__info">
+          <span class="modal__cat" id="modalCat"></span>
+          <h2 class="modal__title" id="modalTitle"></h2>
+          <p class="modal__desc" id="modalDesc"></p>
+          <div class="modal__location" id="modalLocation"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
