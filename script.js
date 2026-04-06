@@ -103,11 +103,39 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
 
-/* About card reveals immediately on load */
+/* Hero card reveals immediately on load */
 window.addEventListener('load', () => {
-  const aboutCard = document.querySelector('.about-card');
-  if (aboutCard) setTimeout(() => aboutCard.classList.add('in-view'), 80);
+  const heroCard = document.querySelector('.hero-card');
+  if (heroCard) setTimeout(() => heroCard.classList.add('in-view'), 80);
 });
+
+
+/* ─── Hero card: Paulina slides right, Osuna slides left on hover ─ */
+(function () {
+  const card    = document.querySelector('.hero-card');
+  const paulina = card && card.querySelector('.hero-card__paulina');
+  const osuna   = card && card.querySelector('.hero-card__osuna');
+  if (!card || !paulina || !osuna) return;
+
+  const EASE_IN  = 'cubic-bezier(0.16, 1, 0.3, 1)';
+  const SPRING   = 'cubic-bezier(0.34, 1.56, 0.64, 1)'; /* overshoot spring */
+  const P_SHIFT  = '72px';
+  const O_SHIFT  = '152px'; /* 80px more than Paulina */
+
+  card.addEventListener('mouseenter', () => {
+    paulina.style.transition = `transform 0.55s ${EASE_IN}`;
+    osuna.style.transition   = `transform 0.55s ${EASE_IN}`;
+    paulina.style.transform  = `translateX(calc(-50% + ${P_SHIFT}))`;
+    osuna.style.transform    = `translateX(calc(-50% - ${O_SHIFT}))`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    paulina.style.transition = `transform 0.75s ${SPRING}`;
+    osuna.style.transition   = `transform 0.75s ${SPRING}`;
+    paulina.style.transform  = 'translateX(-50%)';
+    osuna.style.transform    = 'translateX(-50%)';
+  });
+}());
 
 
 /* ─── Smooth scroll for hash links ─────────────────────────── */
@@ -187,5 +215,61 @@ modal.addEventListener('keydown', e => {
     if (document.activeElement === first) { e.preventDefault(); last.focus(); }
   } else {
     if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+  }
+});
+
+
+/* ─── Contact card & modal ──────────────────────────────── */
+const contactCard        = document.querySelector('.contact-card');
+const contactModal       = document.getElementById('contactModal');
+const contactModalClose  = document.getElementById('contactModalClose');
+const contactModalBackdrop = document.getElementById('contactModalBackdrop');
+const contactForm        = document.getElementById('contactForm');
+
+function openContactModal() {
+  contactModal.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+  contactModalClose.focus();
+}
+
+function closeContactModal() {
+  contactModal.setAttribute('hidden', '');
+  document.body.style.overflow = '';
+  if (contactCard) contactCard.focus();
+}
+
+if (contactCard) {
+  contactCard.addEventListener('click', openContactModal);
+  contactCard.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openContactModal(); }
+  });
+}
+
+contactModalClose.addEventListener('click', closeContactModal);
+contactModalBackdrop.addEventListener('click', closeContactModal);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !contactModal.hasAttribute('hidden')) closeContactModal();
+});
+
+contactForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const name    = document.getElementById('contactName').value.trim();
+  const subject = encodeURIComponent(name ? `Portfolio inquiry from ${name}` : 'Portfolio inquiry');
+  window.location.href = `mailto:osunamancilla@gmail.com?subject=${subject}`;
+  closeContactModal();
+});
+
+/* Focus trap for contact modal */
+contactModal.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const focusable = contactModal.querySelectorAll(
+    'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const first = focusable[0];
+  const last  = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+  } else {
+    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 });

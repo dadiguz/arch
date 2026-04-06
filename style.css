@@ -207,663 +207,464 @@ button { font-family: inherit; cursor: pointer; }
 
 
 /* ══════════════════════════════════════════════════════════════
-   ABOUT CARD — editorial collage, full width
+   HERO CARD — typographic editorial, full width
+   ══════════════════════════════════════════════════════════════ */
+.hero-card {
+  background: var(--cream-2);
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(400px, 54vh, 530px);
+}
+
+.hero-card__label {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 5;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.hero-card__stage {
+  position: absolute;
+  inset: 0;
+}
+
+/* "Paulina" — solid foreground text in front of photo */
+.hero-card__paulina {
+  position: absolute;
+  bottom: -0.05em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-display);
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 700;
+  color: var(--bridesmaid);
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+/* Photo — face shows at top */
+.hero-card__photo-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hero-card__photo {
+  height: 88%;
+  width: auto;
+  max-width: 65%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+}
+
+/* "Osuna" — faint watermark behind photo */
+.hero-card__osuna {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-display);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(240, 132, 147, 0.15);
+  line-height: 0.9;
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+  .hero-card { min-height: clamp(320px, 55vw, 440px); }
+  .hero-card__photo { max-width: 72%; }
+  .hero-card__osuna { font-size: clamp(2.5rem, 10vw, 5rem); }
+  .hero-card__paulina { font-size: clamp(3rem, 10vw, 7rem); }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   ABOUT ME CARD
    ══════════════════════════════════════════════════════════════ */
 .about-card {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 58% 42%;
-  background: var(--cream-2);
-  overflow: hidden;
-  min-height: clamp(386px, 58vh, 626px);
-}
-
-@media (max-width: 700px) {
-  .about-card {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-}
-
-/* ── Text column ── */
-.about-card__text {
-  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 4rem);
+  background: var(--cream);
+  min-height: clamp(400px, 54vh, 530px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1.75rem;
-  position: relative;
-  border-left: 4px solid var(--squash);
+  padding: 1.75rem;
+  gap: 1.25rem;
 }
 
-.about-card__name {
+.about-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.about-card__title {
   font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.about-card__rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(24,16,10,0.1);
+}
+
+.about-card__bio-block {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.about-card__headshot {
+  width: clamp(80px, 11vw, 110px);
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.about-card__bio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.about-card__name-sm {
+  font-family: var(--f-display);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
   color: var(--bridesmaid);
   line-height: 1;
 }
 
-.about-card__label-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.about-card__label {
-  font-size: .65rem;
-  font-weight: 500;
-  letter-spacing: .26em;
+.about-card__role {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-3);
-  white-space: nowrap;
-}
-.about-card__label-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--squash);
-  opacity: .6;
-  max-width: 80px;
+  margin-bottom: 0.5rem;
 }
 
-.about-card__heading {
-  font-family: var(--f-display);
-  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+.about-card__bio-text p:last-child {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--ink-2);
   font-weight: 300;
-  line-height: 1.06;
-  color: var(--ink);
-}
-.about-card__heading em {
-  font-style: italic;
-  color: var(--bridesmaid);
 }
 
-.about-card__bio {
+.about-card__bio-text em {
+  font-style: italic;
+  color: var(--volcanic);
+  font-weight: 400;
+}
+
+.about-card__experience {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  max-width: 50ch;
+  gap: 0.5rem;
 }
-.about-card__bio p {
-  font-size: clamp(.875rem, 1.3vw, 1rem);
+
+.about-card__exp-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+.about-card__exp-rule {
+  width: 32px;
+  height: 2px;
+  background: var(--squash);
+}
+
+.about-card__exp-text {
+  font-size: clamp(0.88rem, 1.3vw, 1rem);
   line-height: 1.85;
   color: var(--ink-2);
   font-weight: 300;
 }
 
-.about-card__meta {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  flex-wrap: wrap;
-  font-size: .65rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  padding-block-start: 1rem;
-  border-block-start: 1px solid rgba(24, 16, 10, .08);
-}
-.about-card__dot {
+.about-card__exp-text em {
+  font-style: italic;
   color: var(--squash);
-  font-size: 1.1rem;
-  line-height: 1;
+  font-weight: 400;
 }
 
-/* ── Visual column — purely position-relative, children are absolute ── */
-.about-card__visual {
-  background: var(--cream-3);
+/* ══════════════════════════════════════════════════════════════
+   CONTACT CARD
+   ══════════════════════════════════════════════════════════════ */
+.contact-card {
+  background: var(--ink);
+  height: clamp(400px, 54vh, 530px);
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  gap: 1rem;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  outline: 2px solid transparent;
+  transition: outline var(--t-fast);
 }
 
-@media (max-width: 700px) {
-  .about-card__visual {
-    min-height: 420px;
-    order: -1;
-  }
+.contact-card:hover,
+.contact-card:focus-visible {
+  outline: 2px solid var(--volcanic);
 }
 
-/* Squash accent block — top-right, behind everything */
-.about-card__accent {
+.contact-card:focus-visible {
+  outline: 3px solid var(--volcanic);
+  outline-offset: 2px;
+}
+
+.contact-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact-card__title {
+  font-family: var(--f-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--mango);
+  transition: color var(--t);
+}
+
+.contact-card:hover .contact-card__title {
+  color: var(--squash);
+}
+
+.contact-card__rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(250,247,240,0.12);
+}
+
+.contact-card__tagline {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(250,247,240,0.4);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 28ch;
+}
+
+.contact-card__body {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-card__email {
+  font-family: var(--f-display);
+  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+  color: var(--bridesmaid);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color var(--t-fast);
+}
+
+.contact-card__email:hover { color: var(--squash); }
+
+.contact-card__phones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-card__phone {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  color: rgba(250,247,240,0.55);
+  transition: color var(--t-fast);
+  letter-spacing: 0.02em;
+}
+
+.contact-card__phone:hover { color: var(--squash); }
+
+.contact-card__flag {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(24,16,10,0.15);
+}
+
+.contact-card__visual {
   position: absolute;
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  width: 62%;
-  height: 38%;
-  background: var(--squash);
-  opacity: .45;
-  z-index: 0;
+  bottom: 0;
+  right: 1.5rem;
   pointer-events: none;
 }
 
-/* Photo: fills visual column with inset, bottom space for logo overlap */
-.about-card__photo-wrap {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  left: 1.5rem;
-  bottom: 2.5rem;     /* logo will rise from here upward into photo */
-  z-index: 1;
-  overflow: hidden;
-}
-.about-card__photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 10%;
+.contact-card__post {
+  width: clamp(120px, 22vw, 220px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.75;
+  transform: rotate(4deg);
+  transition: opacity var(--t), transform var(--t);
+  transform-origin: bottom right;
   display: block;
 }
 
-/* Logo: big, absolutely positioned, overlaps the photo bottom (magazine collage) */
-.about-card__logo {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0.75rem;
-  width: clamp(230px, 42vw, 400px);
-  height: auto;
-  z-index: 3;
-  pointer-events: none;
-}
-
-@media (max-width: 700px) {
-  .about-card__photo-wrap { bottom: 3rem; }
-  .about-card__logo { width: clamp(160px, 55vw, 260px); }
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   PROJECT CARDS — shared base
-   ══════════════════════════════════════════════════════════════ */
-
-/* All project cards share this base — fixed height for editorial grid consistency */
-.pc {
-  cursor: pointer;
-  overflow: hidden;
-  height: clamp(440px, 56vh, 560px);
-  position: relative;
-  transition: outline var(--t-fast);
-  outline: 2px solid transparent;
-  outline-offset: 0;
+.contact-card:hover .contact-card__post {
+  opacity: 1;
+  transform: rotate(0deg) scale(1.04);
 }
 
 @media (max-width: 640px) {
-  /* On mobile (single column) let height be content-driven */
-  .pc { height: auto; min-height: 380px; }
+  .contact-card__visual { display: none; }
 }
 
-/* Hover: volcanic border on every card */
+/* ══════════════════════════════════════════════════════════════
+   PROJECT CARDS — unified editorial layout
+   ══════════════════════════════════════════════════════════════ */
+.pc {
+  background: var(--cream);
+  cursor: pointer;
+  overflow: hidden;
+  height: clamp(400px, 54vh, 530px);
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  outline: 2px solid transparent;
+  outline-offset: 0;
+  transition: outline var(--t-fast);
+}
+
+@media (max-width: 640px) {
+  .pc { height: auto; min-height: 340px; }
+}
+
 .pc:hover,
 .pc:focus-visible {
   outline: 2px solid var(--volcanic);
 }
 
-/* Focus visible ring */
 .pc:focus-visible {
   outline: 3px solid var(--volcanic);
   outline-offset: 2px;
 }
 
-/* ── Shared image container ──
-   The .pc-img container is sized by the grid/card layout.
-   The img inside always fills it fully.
-   NO background-image anywhere. */
-.pc-img {
-  overflow: hidden;
-}
-.pc-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .85s var(--ease-out), filter .55s ease;
-}
-
-/* Hover: scale image on every card */
-.pc:hover .pc-img img,
-.pc:focus-visible .pc-img img {
-  transform: scale(1.04);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   CARD 01 — Long Play Record Store
-   Layout: STACKED (image top, text bottom)
-   ══════════════════════════════════════════════════════════════ */
-.pc--01 {
-  background: var(--cream);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: 0;
-}
-
-.pc--01__header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-}
-.pc--01__cat {
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.pc--01__num {
-  font-family: var(--f-display);
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--squash);
-}
-
-/* Image fills its grid cell completely */
-.pc--01__img {
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-}
-
-.pc--01__footer {
-  padding: 1.25rem 1.5rem;
-  transition: background var(--t), color var(--t);
-}
-.pc--01__rule {
-  width: 100%;
-  height: 1px;
-  background: var(--squash);
-  margin-block-end: .9rem;
-}
-.pc--01__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
-  font-weight: 600;
-  line-height: 1.05;
-  color: var(--ink);
-  transition: color var(--t);
-}
-
-.pc--01:hover .pc--01__footer,
-.pc--01:focus-visible .pc--01__footer {
-  background: var(--volcanic);
-}
-.pc--01:hover .pc--01__title,
-.pc--01:focus-visible .pc--01__title {
-  color: var(--cream);
-}
-.pc--01:hover .pc--01__rule,
-.pc--01:focus-visible .pc--01__rule {
-  background: rgba(250, 247, 240, .4);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   CARD 02 — Transmisiones González
-   Layout: TITLE-FIRST (title dominates top half)
-   ══════════════════════════════════════════════════════════════ */
-.pc--02 {
-  background: var(--cream-2);
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-}
-
-.pc--02__top {
-  flex-shrink: 0;
-}
-.pc--02__title {
-  font-family: var(--f-display);
-  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.02;
-  color: var(--ink);
-  transition: color var(--t);
-}
-.pc--02__rule {
-  width: 100%;
-  height: 1px;
-  background: var(--volcanic);
-  margin-block-start: .85rem;
-}
-.pc--02__spacer {
-  flex: 1;
-  min-height: 1rem;
-}
-
-.pc--02__bottom {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  gap: 0;
-  align-items: end;
-  flex-shrink: 0;
-}
-
-.pc--02__img {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  width: 100%;
-}
-.pc--02__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.pc--02__side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding-inline-start: .75rem;
-  gap: .35rem;
-}
-.pc--02__num {
-  font-family: var(--f-display);
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--squash);
-  transition: color var(--t);
-}
-.pc--02__cat {
-  font-size: .6rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--volcanic);
-  text-align: right;
-}
-
-.pc--02:hover .pc--02__num,
-.pc--02:focus-visible .pc--02__num {
-  color: var(--volcanic);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   CARD 03 — Mariscos Playa Azul
-   Layout: SIDE SPLIT (image left | text right)
-   ══════════════════════════════════════════════════════════════ */
-.pc--03 {
-  background: var(--cream);
-  display: grid;
-  grid-template-columns: 55% 45%;
-  padding: 0;
-}
-
-.pc--03__img {
-  height: 100%;
-  position: relative;
-}
-/* Thin squash rule on right edge of image column */
-.pc--03__img::after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-end: 0;
-  width: 1px;
-  background: var(--squash);
-  z-index: 1;
-}
-.pc--03__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.pc--03__info {
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.6rem;
-  transition: background var(--t);
-}
-.pc--03__num {
-  font-family: var(--f-display);
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--squash);
-  display: block;
-}
-.pc--03__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.7rem, 2.8vw, 2.3rem);
-  font-weight: 600;
-  line-height: 1.05;
-  color: var(--ink);
-  text-align: left;
-  transition: color var(--t);
-}
-.pc--03__cat {
-  font-size: .6rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  display: block;
-}
-.pc--03__accent {
-  width: 40px;
-  height: 2px;
-  background: var(--squash);
-  margin-block-start: auto;
-}
-
-.pc--03:hover .pc--03__info,
-.pc--03:focus-visible .pc--03__info {
-  background: var(--cream-3);
-}
-.pc--03:hover .pc--03__title,
-.pc--03:focus-visible .pc--03__title {
-  color: var(--volcanic);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   CARD 04 — TJ Water
-   Layout: DARK EDITORIAL
-   ══════════════════════════════════════════════════════════════ */
-.pc--04 {
-  background: var(--ink);
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  padding: 2rem;
-  transition: outline var(--t-fast), border var(--t-fast);
-}
-
-.pc--04__row-index {
-  display: flex;
-  justify-content: flex-start;
-}
-.pc--04__num {
-  font-size: .7rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--squash);
-  font-family: var(--f-body);
-  font-weight: 400;
-}
-
-.pc--04__row-title {
-  padding-block: .25rem;
-}
-.pc--04__rule {
-  width: 100%;
-  height: 1px;
-  background: var(--squash);
-  opacity: .6;
-}
-.pc--04__title {
-  font-family: var(--f-display);
-  font-size: clamp(3rem, 6.5vw, 5.2rem);
-  font-weight: 600;
-  line-height: 1.0;
-  color: var(--cream);
-  padding-block: .5rem;
-}
-
-/* Image fills remaining grid space */
-.pc--04__img {
-  width: 100%;
-  height: 100%;
-  min-height: 160px;
-  margin-block: .75rem 0;
-}
-.pc--04__img img {
-  transition: transform .85s var(--ease-out), filter .55s ease;
-}
-
-.pc--04__row-cat {
-  display: flex;
-  justify-content: flex-end;
-  padding-block-start: .75rem;
-}
-.pc--04__cat {
-  font-size: .7rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--squash);
-  font-family: var(--f-body);
-  font-weight: 400;
-}
-
-.pc--04:hover .pc--04__img img,
-.pc--04:focus-visible .pc--04__img img {
-  transform: scale(1.04);
-  filter: contrast(1.1);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   CARD 05 — AG Airbnb
-   Layout: SIDE SPLIT REVERSED on Squash background
-   ══════════════════════════════════════════════════════════════ */
-.pc--05 {
-  background: var(--squash);
-  display: grid;
-  grid-template-columns: 42% 58%;
-  padding: 0;
-}
-
-.pc--05__info {
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: .5rem;
-}
-.pc--05__num {
-  font-family: var(--f-display);
-  font-size: clamp(5rem, 9vw, 7.5rem);
-  font-weight: 700;
-  line-height: .8;
-  color: var(--volcanic);
-  display: block;
-  transition: color var(--t);
-}
-.pc--05__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-  font-weight: 600;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-block-start: auto;
-}
-.pc--05__cat {
-  font-size: .6rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  display: block;
-  margin-block-start: .25rem;
-}
-
-.pc--05__img {
-  height: 100%;
-}
-.pc--05__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.pc--05:hover .pc--05__num,
-.pc--05:focus-visible .pc--05__num {
-  color: var(--ink);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   CARD 06 — Casa Paulina
-   Layout: OVERSIZED TYPE — title dominates
-   ══════════════════════════════════════════════════════════════ */
-.pc--06 {
-  background: var(--cream-2);
-  display: grid;
-  grid-template-rows: 1fr auto;
-  padding: 2rem;
-}
-
-.pc--06__top {
-  display: grid;
-  grid-template-columns: 1fr 52%;
-  align-items: end;
-  gap: 1.25rem;
-}
-
-.pc--06__title {
-  font-family: var(--f-display);
-  font-size: clamp(3.5rem, 8vw, 6.5rem);
-  font-weight: 700;
-  line-height: .88;
-  color: var(--ink);
-  align-self: center;
-  transition: color var(--t);
-}
-
-.pc--06__img {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  align-self: end;
-}
-.pc--06__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.pc--06__bottom {
+.pc__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block-start: 1rem;
-  border-block-start: 1px solid rgba(24, 16, 10, .08);
-  margin-block-start: 1.25rem;
+  padding: 1.1rem 1.4rem;
 }
-.pc--06__cat {
-  font-size: .62rem;
-  letter-spacing: .18em;
+
+.pc__num {
+  font-family: var(--f-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--ink-2);
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1.5px solid rgba(24,16,10,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--t), color var(--t), border-color var(--t);
+}
+
+.pc:hover .pc__num,
+.pc:focus-visible .pc__num {
+  background: var(--volcanic);
+  color: var(--cream);
+  border-color: var(--volcanic);
+}
+
+.pc__cat {
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.pc--06__num {
-  font-family: var(--f-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--squash);
+
+.pc__img {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
-.pc--06:hover .pc--06__title,
-.pc--06:focus-visible .pc--06__title {
-  color: var(--volcanic);
+.pc__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.85s var(--ease-out);
 }
-.pc--06:hover {
-  outline-color: var(--volcanic);
+
+.pc:hover .pc__img img,
+.pc:focus-visible .pc__img img {
+  transform: scale(1.04);
 }
+
+.pc__footer {
+  border-top: 1px solid rgba(24,16,10,0.09);
+  padding: 0.85rem 1.4rem;
+  transition: background var(--t);
+}
+
+.pc:hover .pc__footer,
+.pc:focus-visible .pc__footer {
+  background: var(--volcanic);
+}
+
+.pc__title {
+  font-family: var(--f-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ink);
+  transition: color var(--t);
+}
+
+.pc:hover .pc__title,
+.pc:focus-visible .pc__title {
+  color: var(--cream);
+}
+
+
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -1076,6 +877,146 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 
+/* ══════════════════════════════════════════════════════════════
+   CONTACT MODAL
+   ══════════════════════════════════════════════════════════════ */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.contact-modal[hidden] { display: none; }
+
+.contact-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 16, 10, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.contact-modal__box {
+  position: relative;
+  z-index: 1;
+  background: var(--cream);
+  width: 100%;
+  max-width: 560px;
+  border-radius: 2px;
+  padding: clamp(2rem, 5vw, 3rem);
+  animation: modal-up 0.45s var(--ease-out);
+}
+
+.contact-modal__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-3);
+  padding: 0.35rem;
+  transition: color var(--t-fast);
+}
+
+.contact-modal__close:hover { color: var(--ink); }
+
+.contact-modal__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact-modal__title {
+  font-family: var(--f-display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--bridesmaid);
+}
+
+.contact-modal__to {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.contact-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-modal__label {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.contact-modal__input {
+  background: var(--cream-2);
+  border: 1px solid rgba(24,16,10,0.12);
+  border-radius: 1px;
+  padding: 0.75rem 1rem;
+  font-family: var(--f-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  width: 100%;
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+
+.contact-modal__input:focus {
+  border-color: var(--squash);
+}
+
+.contact-modal__input::placeholder { color: var(--ink-3); }
+
+.contact-modal__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-modal__submit {
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  padding: 0.9rem 2rem;
+  font-family: var(--f-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background var(--t-fast);
+}
+
+.contact-modal__submit:hover { background: var(--volcanic); }
+
+@keyframes modal-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
 /* ─── Accessibility ──────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--volcanic);
@@ -1098,24 +1039,3 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 
-/* ── Responsive: collapse project cards to single column ── */
-@media (max-width: 640px) {
-  .pc--03 {
-    grid-template-columns: 1fr;
-    grid-template-rows: 240px auto;
-  }
-  .pc--03__img::after { display: none; }
-
-  .pc--05 {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 240px;
-  }
-
-  .pc--06__top {
-    grid-template-columns: 1fr;
-  }
-  .pc--06__img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-  }
-}
