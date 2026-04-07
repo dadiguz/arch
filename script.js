@@ -273,3 +273,19 @@ contactModal.addEventListener('keydown', e => {
     if (document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 });
+
+
+/* ─── Blur-up image loader ──────────────────────────────────── */
+function revealImg(img) {
+  img.classList.add('is-loaded');
+  const wrap = img.closest('.pc__img');
+  if (wrap) wrap.classList.add('img-loaded');
+}
+
+document.querySelectorAll('img').forEach(img => {
+  if (img.complete && img.naturalWidth) {
+    revealImg(img);
+  } else {
+    img.addEventListener('load', () => revealImg(img), { once: true });
+  }
+});
