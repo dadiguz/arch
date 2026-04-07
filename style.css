@@ -236,92 +236,61 @@ button { font-family: inherit; cursor: pointer; }
 
 
 /* ══════════════════════════════════════════════════════════════
-   HERO CARD — typographic editorial, full width
+   HERO CARD — logo centered, same size as other cards
    ══════════════════════════════════════════════════════════════ */
 .hero-card {
   background: var(--cream-2);
+  height: clamp(400px, 54vh, 530px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / -1;
+  width: calc((100% - var(--gap)) / 2);
+  margin-inline: auto;
   position: relative;
   overflow: hidden;
-  min-height: clamp(400px, 54vh, 530px);
 }
 
 .hero-card__label {
   position: absolute;
-  top: 1.5rem;
-  left: 2rem;
-  z-index: 5;
+  top: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.6rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink-3);
-}
-
-.hero-card__stage {
-  position: absolute;
-  inset: 0;
-}
-
-/* "Paulina" — solid foreground text in front of photo */
-.hero-card__paulina {
-  position: absolute;
-  bottom: -0.05em;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--f-display);
-  font-size: clamp(4rem, 12vw, 10rem);
-  font-weight: 700;
-  color: var(--bridesmaid);
-  line-height: 1;
   white-space: nowrap;
-  z-index: 3;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.02em;
-}
-
-/* Photo — face shows at top */
-.hero-card__photo-wrap {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   z-index: 2;
 }
 
-.hero-card__photo {
-  height: 88%;
-  width: auto;
-  max-width: 65%;
-  object-fit: contain;
-  object-position: top center;
-  display: block;
-}
-
-/* "Osuna" — faint watermark behind photo */
-.hero-card__osuna {
+.hero-card__brush {
   position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--f-display);
-  font-size: clamp(3.5rem, 10vw, 8rem);
-  font-weight: 700;
-  font-style: italic;
-  color: rgba(240, 132, 147, 0.15);
-  line-height: 0.9;
-  white-space: nowrap;
-  z-index: 1;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transform: translateY(-50%);
+  mix-blend-mode: multiply;
+  opacity: 0.95;
   pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.02em;
+  z-index: 0;
 }
 
-@media (max-width: 640px) {
-  .hero-card { min-height: clamp(320px, 55vw, 440px); }
-  .hero-card__photo { max-width: 72%; }
-  .hero-card__osuna { font-size: clamp(2.5rem, 10vw, 5rem); }
-  .hero-card__paulina { font-size: clamp(3rem, 10vw, 7rem); }
+.hero-card__logo {
+  width: clamp(220px, 34vw, 400px);
+  height: auto;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  transform: scale(1);
+  transition: opacity 0.6s var(--ease-out),
+              transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-card:hover .hero-card__logo {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 
