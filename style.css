@@ -43,12 +43,13 @@ html {
 }
 body {
   font-family: var(--f-body);
-  background: #D4CCBA;   /* gap colour between cards */
+  background: #D4CCBA;
   color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 img {
   display: block;
   max-width: 100%;

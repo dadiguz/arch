@@ -275,6 +275,41 @@ contactModal.addEventListener('keydown', e => {
 });
 
 
+/* ─── Paper grain overlay (canvas-based, cards only) ────────── */
+(function () {
+  const SIZE = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = SIZE;
+  const ctx = canvas.getContext('2d');
+  const imgData = ctx.createImageData(SIZE, SIZE);
+  for (let i = 0; i < imgData.data.length; i += 4) {
+    const v = Math.random() * 255 | 0;
+    imgData.data[i] = imgData.data[i + 1] = imgData.data[i + 2] = v;
+    imgData.data[i + 3] = 255;
+  }
+  ctx.putImageData(imgData, 0, 0);
+  const url = canvas.toDataURL();
+  const style = document.createElement('style');
+  style.textContent = `
+    .hero-card::after,
+    .pc::after,
+    .about-card::after,
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0.08;
+      background: url(${url}) repeat;
+      background-size: 256px 256px;
+      border-radius: inherit;
+    }
+  `;
+  document.head.appendChild(style);
+}());
+
+
 /* ─── Blur-up image loader ──────────────────────────────────── */
 function revealImg(img) {
   img.classList.add('is-loaded');
