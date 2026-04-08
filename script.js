@@ -138,6 +138,31 @@ window.addEventListener('load', () => {
 }());
 
 
+/* ─── Hero parallax on scroll ──────────────────────────────── */
+(function () {
+  const hero  = document.querySelector('.hero-card');
+  if (!hero) return;
+  const brush = hero.querySelector('.hero-card__brush');
+  const logo  = hero.querySelector('.hero-card__logo');
+  const label = hero.querySelector('.hero-card__label');
+  const nav   = hero.querySelector('.hero-card__nav');
+
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      const h = hero.offsetHeight;
+      if (y > h) { ticking = false; return; } /* past hero, skip */
+      if (brush) brush.style.transform = `translateY(calc(-50% + ${y * 0.25}px))`;
+      ticking = false;
+    });
+  }, { passive: true });
+}());
+
+
 /* ─── Smooth scroll for hash links ─────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function (e) {
@@ -300,7 +325,7 @@ contactModal.addEventListener('keydown', e => {
       inset: 0;
       z-index: 10;
       pointer-events: none;
-      opacity: 0.08;
+      opacity: 0.07;
       background: url(${url}) repeat;
       background-size: 256px 256px;
       border-radius: inherit;
