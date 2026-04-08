@@ -232,6 +232,12 @@ button { font-family: inherit; cursor: pointer; }
 
 @media (max-width: 640px) {
   .grid { grid-template-columns: 1fr; }
+
+  .about-card,
+  .contact-card {
+    height: 300px;
+    min-height: unset;
+  }
 }
 
 
@@ -293,6 +299,15 @@ button { font-family: inherit; cursor: pointer; }
 .hero-card:hover .hero-card__logo {
   opacity: 1;
   transform: scale(1.08);
+}
+
+@media (max-width: 640px) {
+  .hero-card {
+    width: 100%;
+    height: 300px;
+    margin-inline: 0;
+    grid-column: 1;
+  }
 }
 
 
@@ -589,7 +604,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 @media (max-width: 640px) {
-  .pc { height: auto; min-height: 340px; }
+  .pc { height: 300px; }
 }
 
 .pc:hover,
