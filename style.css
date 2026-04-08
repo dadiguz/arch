@@ -505,15 +505,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .contact-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 38%;
-  background: url('assets/board.png') center / cover no-repeat;
-  pointer-events: none;
-  z-index: 0;
+  content: none;
 }
 
 .contact-card__header {
