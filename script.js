@@ -8,21 +8,21 @@ const PROJECTS = [
   {
     title:    'Long Play Record Store',
     category: 'Lighting Design',
-    location: 'Tijuana, México',
+    location: 'Ensenada, BC',
     image:    'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
     desc:     'Crafted to evoke the warmth and moody ambiance of a mid-century vintage shop. The design features a combination of track lighting and pendants with a retro flair, emitting a soft, warm glow that highlights the vinyl records and creates an inviting atmosphere. The lighting levels are carefully balanced to provide an adequate view of the products while maintaining a cozy, intimate feel — a nod to the classic record stores of the past, with a modern twist.',
   },
   {
     title:    'Transmisiones González',
     category: 'Lighting Design',
-    location: 'Tijuana, México',
+    location: 'Ensenada, BC',
     image:    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
     desc:     'Paying homage to mid-century style with a modern twist. The intent is to create a welcoming and functional atmosphere that provides clear visibility for customers and staff. Mid-century inspired fixtures with metal and glass finishes combine with cool white LED lighting (3500K–4000K) and focused illumination on work areas — creating a functional, stylish space that\'s both inviting for customers and efficient for staff.',
   },
   {
     title:    'Mariscos Playa Azul',
     category: 'Lighting & Interior Design',
-    location: 'Tijuana, México',
+    location: 'Ensenada, BC',
     image:    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
     desc:     'A comprehensive design package for Mariscos Playa Azul, celebrating its rich history. The lighting and interior design blend vintage charm with modern functionality, creating a lively, beachy atmosphere that honors the restaurant\'s legacy. Warm, inviting lighting (2700K–3000K) paired with reclaimed wood accents, nautical elements, and vintage decor evoke the spirit of a classic coastal eatery.',
   },
@@ -36,7 +36,7 @@ const PROJECTS = [
   {
     title:    'Casa Paulina',
     category: 'Architecture & Lighting Design',
-    location: 'Tijuana, México',
+    location: 'Ensenada, BC',
     image:    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
     desc:     'A serene retreat that embodies an introspective architectural style, blending traditional Mexican chukum plaster with mid-century modern elements. The design wraps around a multi-level layout, creating a sense of safety and tranquility. Abundant natural light filtered through strategically placed windows and skylights, paired with warm lighting (2700K–3000K) that highlights the chukum texture — a peaceful sanctuary that invites relaxation and connection with the surroundings.',
   },

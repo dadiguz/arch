@@ -4,9 +4,9 @@
 - [x] 2. Cambiar acomodo y tipo de letra del subheading en portada. Eliminar estrellas en portada tmbn.
 - [x] 3. Dirigir llamada (no WhatsApp) para número de EEUU
 - [x] 4. Eliminar © AG airbnb
-- [ ] 5. Quitar los slash "/" de proyecto © y ©
-- [ ] 6. Cambiar anaranjado x amarillo que teníamos??
-- [ ] 7. Agregar dirección a: Longplay Record Store, Ens. BC, Transmisiones González, Mariscos Playa Azul y Casa Paulina tmbn. Solo TJ Water es Tijuana.
+- [x] 5. Quitar los slash "/" de proyecto © y ©
+- [x] 6. Cambiar anaranjado x amarillo que teníamos??
+- [x] 7. Agregar dirección a: Longplay Record Store, Ens. BC, Transmisiones González, Mariscos Playa Azul y Casa Paulina tmbn. Solo TJ Water es Tijuana.
 - [x] 8. Project description changes — actualizar textos de proyectos:
 
   **Long Play — Lighting intent:**
