@@ -233,7 +233,11 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 640px) {
   .grid { grid-template-columns: 1fr; }
 
-  .about-card,
+  .about-card {
+    height: auto;
+    min-height: 300px;
+  }
+
   .contact-card {
     height: 300px;
     min-height: unset;
