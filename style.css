@@ -269,31 +269,26 @@ button { font-family: inherit; cursor: pointer; }
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--f-display);
-  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 900;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--bridesmaid);
+  color: var(--mango);
   text-align: center;
-  line-height: 0.85;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0;
+  gap: 1rem;
   white-space: nowrap;
   z-index: 2;
+  -webkit-text-stroke: 0.7px var(--ink);
 }
 
-.hero-card__stars {
-  position: absolute;
-  width: clamp(36px, 5vw, 60px);
-  height: auto;
-  mix-blend-mode: multiply;
-  opacity: 0.85;
-  top: calc(-0.5em + 32px);
-  right: -0.6em;
-  pointer-events: none;
+.hero-card__label-dot {
+  color: var(--mango);
+  opacity: 0.5;
 }
+
 
 .hero-card__brush {
   position: absolute;

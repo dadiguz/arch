@@ -1,8 +1,8 @@
 # Website Backlog
 
 - [ ] 1. Eliminar corcho de Contact Card
-- [ ] 2. Cambiar acomodo y tipo de letra del subheading en portada. Eliminar estrellas en portada tmbn.
-- [ ] 3. Dirigir llamada (no WhatsApp) para número de EEUU
+- [x] 2. Cambiar acomodo y tipo de letra del subheading en portada. Eliminar estrellas en portada tmbn.
+- [x] 3. Dirigir llamada (no WhatsApp) para número de EEUU
 - [x] 4. Eliminar © AG airbnb
 - [ ] 5. Quitar los slash "/" de proyecto © y ©
 - [ ] 6. Cambiar anaranjado x amarillo que teníamos??
