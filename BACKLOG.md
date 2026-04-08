@@ -7,7 +7,7 @@
 - [ ] 5. Quitar los slash "/" de proyecto © y ©
 - [ ] 6. Cambiar anaranjado x amarillo que teníamos??
 - [ ] 7. Agregar dirección a: Longplay Record Store, Ens. BC, Transmisiones González, Mariscos Playa Azul y Casa Paulina tmbn. Solo TJ Water es Tijuana.
-- [ ] 8. Project description changes — actualizar textos de proyectos:
+- [x] 8. Project description changes — actualizar textos de proyectos:
 
   **Long Play — Lighting intent:**
   Crafted to evoke the warmth and moody ambiance of a mid-century vintage shop. The design features a combination of track lighting and pendants with a retro flair, emitting a soft, warm glow that highlights the vinyl records and creates an inviting atmosphere. The lighting levels are carefully balanced to provide an adequate view of the products while maintaining a cozy, intimate feel. The overall aesthetic is a nod to the classic record stores of the past, with a modern twist.
