@@ -723,6 +723,28 @@ button { font-family: inherit; cursor: pointer; }
   animation: none;
 }
 
+.pc__img--soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream-2);
+  animation: none;
+  overflow: hidden;
+}
+
+.pc__img--soon .pc__coming-soon {
+  width: auto;
+  height: auto;
+  max-width: 86%;
+  max-height: 86%;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition: none;
+  margin-bottom: 50px;
+}
+
 .pc__img img {
   width: 100%;
   height: 100%;
@@ -934,13 +956,20 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* Image panel */
-.modal__media { overflow: hidden; }
+.modal__media {
+  overflow: hidden;
+  background: var(--cream-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .modal__img {
   width: 100%;
   height: 100%;
   min-height: 400px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  padding: 2rem;
 }
 
 @media (max-width: 640px) {

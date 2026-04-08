@@ -9,7 +9,7 @@ const PROJECTS = [
     title:    'Long Play Record Store',
     category: 'Lighting Design',
     location: 'Ensenada, México',
-    image:    'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+    image:    'assets/coming-soon.png',
     desc:     'Crafted to evoke the warmth and moody ambiance of a mid-century vintage shop. Track lighting and pendants with a retro flair emit a soft, warm glow that highlights the vinyl records and creates an inviting atmosphere — a nod to the classic record stores of the past, with a modern twist.',
     features: [
       'Mid-century modern-inspired fixtures in warm finishes (brass, copper, wood)',
@@ -22,7 +22,7 @@ const PROJECTS = [
     title:    'Transmisiones González',
     category: 'Lighting Design',
     location: 'Ensenada, México',
-    image:    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    image:    'assets/coming-soon.png',
     desc:     'Paying homage to mid-century style with a modern twist. The intent is to create a welcoming and functional atmosphere that provides clear visibility for customers and staff — a space that is both inviting and efficient.',
     features: [
       'Mid-century inspired fixtures with metal and glass finishes',
@@ -35,7 +35,7 @@ const PROJECTS = [
     title:    'Mariscos Playa Azul',
     category: 'Lighting & Interior Design',
     location: 'Ensenada, México',
-    image:    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
+    image:    'assets/coming-soon.png',
     desc:     'A comprehensive design package celebrating the restaurant\'s rich history. Lighting and interior design blend vintage charm with modern functionality, creating a lively, beachy atmosphere that honors the legacy of Mariscos Playa Azul.',
     features: [
       'Warm, inviting lighting (2700K–3000K) with a mix of pendant lights, sconces, and table lamps',
@@ -48,7 +48,7 @@ const PROJECTS = [
     title:    'TJ Water',
     category: 'Lighting Design',
     location: 'Tijuana, México',
-    image:    'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
+    image:    'assets/coming-soon.png',
     desc:     'Crafted to be modern, clean, and functional. The goal is to create a welcoming and efficient space for customers and staff, prioritizing clarity and ease of use throughout.',
     features: [
       'Bright, neutral LED lighting (3500K–4000K) for clarity and visibility',
@@ -60,7 +60,7 @@ const PROJECTS = [
     title:    'Casa Paulina',
     category: 'Architecture & Lighting Design',
     location: 'Ensenada, México',
-    image:    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+    image:    'assets/coming-soon.png',
     desc:     'A serene retreat blending traditional Mexican chukum plaster with mid-century modern elements. The multi-level layout creates a sense of safety and tranquility — a peaceful sanctuary that invites relaxation and connection with the surroundings.',
     features: [
       'Chukum plaster walls and ceilings, providing a warm, earthy texture and natural beauty',
