@@ -885,10 +885,9 @@ button { font-family: inherit; cursor: pointer; }
   position: relative;
   width: 100%;
   max-width: 980px;
-  max-height: 90svh;
+  height: 90svh;
   background: var(--cream);
   overflow: hidden;
-  overflow-y: auto;
   animation: slideUp .48s var(--ease-out) forwards;
   z-index: 1;
 }
@@ -927,6 +926,7 @@ button { font-family: inherit; cursor: pointer; }
 .modal__inner {
   display: grid;
   grid-template-columns: 55% 45%;
+  height: 100%;
 }
 
 @media (max-width: 640px) {
@@ -954,6 +954,7 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   justify-content: center;
   gap: 1.25rem;
+  overflow-y: auto;
 }
 .modal__cat {
   font-size: .63rem;
@@ -976,6 +977,60 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 300;
   max-width: 46ch;
 }
+.modal__features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal__features-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--volcanic);
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--t-fast);
+}
+
+.modal__features-toggle:hover { color: var(--ink); }
+
+.modal__features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s var(--ease-out), opacity 0.3s ease 0.05s;
+}
+
+.modal__features-list.is-open {
+  opacity: 1;
+}
+
+.modal__features-list li {
+  font-size: clamp(.8rem, 1.2vw, .9rem);
+  line-height: 1.6;
+  color: var(--ink-2);
+  font-weight: 300;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.modal__features-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--volcanic);
+}
+
 .modal__location {
   font-size: .65rem;
   letter-spacing: .18em;

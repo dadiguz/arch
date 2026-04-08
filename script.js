@@ -8,37 +8,67 @@ const PROJECTS = [
   {
     title:    'Long Play Record Store',
     category: 'Lighting Design',
-    location: 'Ensenada, BC',
+    location: 'Ensenada, México',
     image:    'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
-    desc:     'Crafted to evoke the warmth and moody ambiance of a mid-century vintage shop. The design features a combination of track lighting and pendants with a retro flair, emitting a soft, warm glow that highlights the vinyl records and creates an inviting atmosphere. The lighting levels are carefully balanced to provide an adequate view of the products while maintaining a cozy, intimate feel — a nod to the classic record stores of the past, with a modern twist.',
+    desc:     'Crafted to evoke the warmth and moody ambiance of a mid-century vintage shop. Track lighting and pendants with a retro flair emit a soft, warm glow that highlights the vinyl records and creates an inviting atmosphere — a nod to the classic record stores of the past, with a modern twist.',
+    features: [
+      'Mid-century modern-inspired fixtures in warm finishes (brass, copper, wood)',
+      'Soft, warm LED lighting (2700K–3000K) to reduce glare and create a relaxing ambiance',
+      'Strategically placed track lighting to highlight featured records and create visual interest',
+      'Dimmable lighting controls to adjust ambiance according to the time of day or special events',
+    ],
   },
   {
     title:    'Transmisiones González',
     category: 'Lighting Design',
-    location: 'Ensenada, BC',
+    location: 'Ensenada, México',
     image:    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    desc:     'Paying homage to mid-century style with a modern twist. The intent is to create a welcoming and functional atmosphere that provides clear visibility for customers and staff. Mid-century inspired fixtures with metal and glass finishes combine with cool white LED lighting (3500K–4000K) and focused illumination on work areas — creating a functional, stylish space that\'s both inviting for customers and efficient for staff.',
+    desc:     'Paying homage to mid-century style with a modern twist. The intent is to create a welcoming and functional atmosphere that provides clear visibility for customers and staff — a space that is both inviting and efficient.',
+    features: [
+      'Mid-century inspired fixtures with metal and glass finishes',
+      'Cool white LED lighting (3500K–4000K) for enhanced visibility',
+      'Focused lighting on work areas and product displays',
+      'Adequate lighting levels for an automotive shop, with a minimum of 500 lux in work areas',
+    ],
   },
   {
     title:    'Mariscos Playa Azul',
     category: 'Lighting & Interior Design',
-    location: 'Ensenada, BC',
+    location: 'Ensenada, México',
     image:    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
-    desc:     'A comprehensive design package for Mariscos Playa Azul, celebrating its rich history. The lighting and interior design blend vintage charm with modern functionality, creating a lively, beachy atmosphere that honors the restaurant\'s legacy. Warm, inviting lighting (2700K–3000K) paired with reclaimed wood accents, nautical elements, and vintage decor evoke the spirit of a classic coastal eatery.',
+    desc:     'A comprehensive design package celebrating the restaurant\'s rich history. Lighting and interior design blend vintage charm with modern functionality, creating a lively, beachy atmosphere that honors the legacy of Mariscos Playa Azul.',
+    features: [
+      'Warm, inviting lighting (2700K–3000K) with a mix of pendant lights, sconces, and table lamps',
+      'Reclaimed wood accents, nautical elements, and vintage decor to evoke a classic coastal eatery',
+      'Adequate lighting levels: 300–500 lux in dining areas and 500–700 lux in food prep areas',
+      'Comfortable seating, natural textures, and coastal colors to create a welcoming ambiance',
+    ],
   },
   {
     title:    'TJ Water',
     category: 'Lighting Design',
     location: 'Tijuana, México',
     image:    'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
-    desc:     'Crafted to be modern, clean, and functional. The goal is to create a welcoming and efficient space for customers and staff. Bright, neutral LED lighting (3500K–4000K) and sleek, minimalist fixtures complement the dispensary\'s modern aesthetic — prioritizing functionality and ease of use for a seamless customer experience.',
+    desc:     'Crafted to be modern, clean, and functional. The goal is to create a welcoming and efficient space for customers and staff, prioritizing clarity and ease of use throughout.',
+    features: [
+      'Bright, neutral LED lighting (3500K–4000K) for clarity and visibility',
+      'Sleek, minimalist fixtures that complement the dispensary\'s modern aesthetic',
+      'Adequate lighting levels: 500–700 lux in service areas and 300–500 lux in customer areas',
+    ],
   },
   {
     title:    'Casa Paulina',
     category: 'Architecture & Lighting Design',
-    location: 'Ensenada, BC',
+    location: 'Ensenada, México',
     image:    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-    desc:     'A serene retreat that embodies an introspective architectural style, blending traditional Mexican chukum plaster with mid-century modern elements. The design wraps around a multi-level layout, creating a sense of safety and tranquility. Abundant natural light filtered through strategically placed windows and skylights, paired with warm lighting (2700K–3000K) that highlights the chukum texture — a peaceful sanctuary that invites relaxation and connection with the surroundings.',
+    desc:     'A serene retreat blending traditional Mexican chukum plaster with mid-century modern elements. The multi-level layout creates a sense of safety and tranquility — a peaceful sanctuary that invites relaxation and connection with the surroundings.',
+    features: [
+      'Chukum plaster walls and ceilings, providing a warm, earthy texture and natural beauty',
+      'Abundant natural light filtered through strategically placed windows and skylights',
+      'Mid-century modern accents: clean lines, organic shapes, and functional elegance',
+      'Multiple levels, creating a sense of depth and visual interest',
+      'Warm, inviting lighting (2700K–3000K) that highlights the chukum texture',
+    ],
   },
 ];
 
@@ -168,24 +198,40 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 
 /* ─── Modal ─────────────────────────────────────────────────── */
-const modal         = document.getElementById('modal');
-const modalBackdrop = document.getElementById('modalBackdrop');
-const modalClose    = document.getElementById('modalClose');
-const modalImg      = document.getElementById('modalImg');
-const modalCat      = document.getElementById('modalCat');
-const modalTitle    = document.getElementById('modalTitle');
-const modalDesc     = document.getElementById('modalDesc');
-const modalLoc      = document.getElementById('modalLocation');
+const modal               = document.getElementById('modal');
+const modalBackdrop       = document.getElementById('modalBackdrop');
+const modalClose          = document.getElementById('modalClose');
+const modalImg            = document.getElementById('modalImg');
+const modalCat            = document.getElementById('modalCat');
+const modalTitle          = document.getElementById('modalTitle');
+const modalDesc           = document.getElementById('modalDesc');
+const modalLoc            = document.getElementById('modalLocation');
+const modalFeaturesToggle = document.getElementById('modalFeaturesToggle');
+const modalFeaturesList   = document.getElementById('modalFeaturesList');
+
+modalFeaturesToggle.addEventListener('click', () => {
+  const isOpen = modalFeaturesList.classList.toggle('is-open');
+  modalFeaturesList.style.maxHeight = isOpen ? modalFeaturesList.scrollHeight + 'px' : '0';
+  modalFeaturesToggle.textContent = isOpen ? '− Features' : '+ Features';
+  modalFeaturesToggle.setAttribute('aria-expanded', String(isOpen));
+});
 
 function openModal(index) {
   const p = PROJECTS[index];
   if (!p) return;
-  modalImg.src              = p.image;
-  modalImg.alt              = p.title;
-  modalCat.textContent      = p.category;
-  modalTitle.textContent    = p.title;
-  modalDesc.textContent     = p.desc;
-  modalLoc.textContent      = p.location;
+  modalImg.src           = p.image;
+  modalImg.alt           = p.title;
+  modalCat.textContent   = p.category;
+  modalTitle.textContent = p.title;
+  modalDesc.textContent  = p.desc;
+  modalLoc.textContent   = p.location;
+
+  modalFeaturesList.innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
+  modalFeaturesList.classList.remove('is-open');
+  modalFeaturesList.style.maxHeight = '0';
+  modalFeaturesToggle.textContent = '+ Features';
+  modalFeaturesToggle.setAttribute('aria-expanded', 'false');
+
   modal.removeAttribute('hidden');
   document.body.style.overflow = 'hidden';
   modalClose.focus();
