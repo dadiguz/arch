@@ -680,31 +680,44 @@ button { font-family: inherit; cursor: pointer; }
 .pc__num {
   font-family: var(--f-display);
   font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--ink-2);
+  font-weight: 900;
+  color: var(--cream);
   width: 3.2rem;
   height: 3.2rem;
-  border: 1.5px solid rgba(24,16,10,0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background var(--t), color var(--t), border-color var(--t);
+  background: var(--bridesmaid);
+  transition: transform var(--t);
 }
 
 .pc:hover .pc__num,
 .pc:focus-visible .pc__num {
-  background: var(--volcanic);
-  color: var(--cream);
-  border-color: var(--volcanic);
+  transform: scale(1.1);
 }
+
+/* Odd cards — pink */
+.pc:nth-child(odd) .pc__num   { background: var(--bridesmaid); }
+.pc:nth-child(odd):hover .pc__footer,
+.pc:nth-child(odd):focus-visible .pc__footer { background: var(--bridesmaid); }
+.pc:nth-child(odd):hover,
+.pc:nth-child(odd):focus-visible { outline-color: var(--bridesmaid); }
+
+/* Even cards — orange */
+.pc:nth-child(even) .pc__num  { background: var(--volcanic); }
+.pc:nth-child(even):hover .pc__footer,
+.pc:nth-child(even):focus-visible .pc__footer { background: var(--volcanic); }
+.pc:nth-child(even):hover,
+.pc:nth-child(even):focus-visible { outline-color: var(--volcanic); }
 
 .pc__cat {
   font-size: 0.64rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--ink-2);
+  font-weight: 500;
 }
 
 .pc__img {
