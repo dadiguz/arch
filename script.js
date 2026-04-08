@@ -34,13 +34,6 @@ const PROJECTS = [
     desc:     'Crafted to be modern, clean, and functional. The goal is to create a welcoming and efficient space for customers and staff. Bright, neutral LED lighting (3500K–4000K) and sleek, minimalist fixtures complement the dispensary\'s modern aesthetic — prioritizing functionality and ease of use for a seamless customer experience.',
   },
   {
-    title:    'AG Airbnb',
-    category: 'Lighting Design',
-    location: 'Tijuana, México',
-    image:    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
-    desc:     'A short-term rental designed to feel like a well-curated home. I layered lighting across ambient, accent, and task levels — warm tones that settle guests in from the moment they arrive.',
-  },
-  {
     title:    'Casa Paulina',
     category: 'Architecture & Lighting Design',
     location: 'Tijuana, México',
