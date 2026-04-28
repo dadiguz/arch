@@ -444,7 +444,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .about-card__experience {
-  margin-top: auto;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
