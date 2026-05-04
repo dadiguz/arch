@@ -206,6 +206,7 @@ const modalBackdrop       = document.getElementById('modalBackdrop');
 const modalClose          = document.getElementById('modalClose');
 const modalImg            = document.getElementById('modalImg');
 const modalVideo          = document.getElementById('modalVideo');
+const modalMoodboardBtn   = document.getElementById('modalMoodboardBtn');
 const modalCat            = document.getElementById('modalCat');
 const modalTitle          = document.getElementById('modalTitle');
 const modalDesc           = document.getElementById('modalDesc');
@@ -220,20 +221,108 @@ modalFeaturesToggle.addEventListener('click', () => {
   modalFeaturesToggle.setAttribute('aria-expanded', String(isOpen));
 });
 
-function openModal(index) {
-  const p = PROJECTS[index];
-  if (!p) return;
-  if (p.video) {
-    modalVideo.src = p.video;
-    modalVideo.removeAttribute('hidden');
-    modalImg.setAttribute('hidden', '');
-  } else {
-    modalImg.src = p.image;
-    modalImg.alt = p.title;
+const FADE_OUT = 240;
+const FADE_IN  = 380;
+
+function mediaFadeOut(el, cb) {
+  el.style.transition = `opacity ${FADE_OUT}ms ease, transform ${FADE_OUT}ms ease`;
+  el.style.opacity    = '0';
+  el.style.transform  = 'scale(0.96)';
+  setTimeout(() => {
+    el.setAttribute('hidden', '');
+    el.style.cssText = '';
+    cb && cb();
+  }, FADE_OUT);
+}
+
+function mediaFadeIn(el) {
+  el.style.opacity   = '0';
+  el.style.transform = 'scale(1.03)';
+  el.style.transition = 'none';
+  el.removeAttribute('hidden');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    el.style.transition = `opacity ${FADE_IN}ms ease, transform ${FADE_IN}ms cubic-bezier(0.16,1,0.3,1)`;
+    el.style.opacity    = '1';
+    el.style.transform  = 'scale(1)';
+    setTimeout(() => { el.style.cssText = ''; }, FADE_IN);
+  }));
+}
+
+function currentMediaEl() {
+  return modalVideo.hasAttribute('hidden') ? modalImg : modalVideo;
+}
+
+function setModalDesignMode(animated) {
+  modalMoodboardBtn.setAttribute('aria-pressed', 'false');
+  if (!animated) {
+    modalImg.src = 'assets/coming-soon.png';
+    modalImg.alt = 'Coming Soon';
     modalImg.removeAttribute('hidden');
     modalVideo.setAttribute('hidden', '');
     modalVideo.src = '';
+    return;
   }
+  const outEl = currentMediaEl();
+  mediaFadeOut(outEl, () => {
+    if (outEl === modalVideo) modalVideo.src = '';
+    modalImg.src = 'assets/coming-soon.png';
+    modalImg.alt = 'Coming Soon';
+    mediaFadeIn(modalImg);
+  });
+}
+
+function setModalMoodboardMode(p, animated) {
+  modalMoodboardBtn.setAttribute('aria-pressed', 'true');
+  const prepare = () => {
+    if (p.video) {
+      modalVideo.src = p.video;
+      mediaFadeIn(modalVideo);
+    } else {
+      modalImg.src = p.image;
+      modalImg.alt = p.title;
+      mediaFadeIn(modalImg);
+    }
+  };
+  if (!animated) { prepare(); return; }
+  mediaFadeOut(currentMediaEl(), () => {
+    if (p.video) modalImg.setAttribute('hidden', '');
+    else { modalVideo.setAttribute('hidden', ''); modalVideo.src = ''; }
+    prepare();
+  });
+}
+
+let currentModalProject = null;
+
+modalMoodboardBtn.addEventListener('click', () => {
+  const isActive = modalMoodboardBtn.getAttribute('aria-pressed') === 'true';
+  if (isActive) {
+    setModalDesignMode(true);
+  } else {
+    setModalMoodboardMode(currentModalProject, true);
+  }
+});
+
+function openModal(index) {
+  const p = PROJECTS[index];
+  if (!p) return;
+  currentModalProject = p;
+
+  /* always open in Design mode (no animation on first open) */
+  setModalDesignMode(false);
+
+  /* show Moodboard button only for projects with real content */
+  const hasMoodboard = !!(p.video || (p.image && !p.image.includes('coming-soon')));
+  if (hasMoodboard) {
+    /* restart entrance animation */
+    modalMoodboardBtn.style.animation = 'none';
+    modalMoodboardBtn.removeAttribute('hidden');
+    requestAnimationFrame(() => {
+      modalMoodboardBtn.style.animation = '';
+    });
+  } else {
+    modalMoodboardBtn.setAttribute('hidden', '');
+  }
+
   modalCat.textContent   = p.category;
   modalTitle.textContent = p.title;
   modalDesc.textContent  = p.desc;
@@ -253,6 +342,8 @@ function openModal(index) {
 function closeModal() {
   modal.setAttribute('hidden', '');
   document.body.style.overflow = '';
+  modalVideo.src = '';
+  currentModalProject = null;
   if (lastFocusedCard) lastFocusedCard.focus();
 }
 
