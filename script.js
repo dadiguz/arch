@@ -9,8 +9,8 @@ const PROJECTS = [
     title:    'Long Play Record Store',
     category: 'Lighting Design',
     location: 'Ensenada, México',
-    video:    'content/long-play.MOV',
-    image:    null,
+    video:    null,
+    image:    'content/long-play.JPG',
     desc:     'Crafted to evoke the warmth and moody ambiance of a mid-century vintage shop. Track lighting and pendants with a retro flair emit a soft, warm glow that highlights the vinyl records and creates an inviting atmosphere — a nod to the classic record stores of the past, with a modern twist.',
     features: [
       'Mid-century modern-inspired fixtures in warm finishes (brass, copper, wood)',
@@ -23,8 +23,8 @@ const PROJECTS = [
     title:    'Transmisiones González',
     category: 'Lighting Design',
     location: 'Ensenada, México',
-    video:    'content/refaccionaria.MOV',
-    image:    null,
+    video:    null,
+    image:    'content/refaccionaria.JPG',
     desc:     'Paying homage to mid-century style with a modern twist. The intent is to create a welcoming and functional atmosphere that provides clear visibility for customers and staff — a space that is both inviting and efficient.',
     features: [
       'Mid-century inspired fixtures with metal and glass finishes',

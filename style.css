@@ -771,6 +771,22 @@ button { font-family: inherit; cursor: pointer; }
   transform: scale(1.04);
 }
 
+/* Static photo cards — show full image without cropping */
+.pc__img > img.pc__img-photo {
+  object-fit: contain;
+  transform: scale(1);
+}
+.pc__img > img.pc__img-photo.is-loaded {
+  transform: scale(1);
+}
+.pc:hover .pc__img > img.pc__img-photo,
+.pc:focus-visible .pc__img > img.pc__img-photo {
+  transform: scale(1);
+}
+.pc__img.img-loaded:has(> img.pc__img-photo) {
+  background: var(--cream);
+}
+
 .pc__img video {
   width: 100%;
   height: 100%;
