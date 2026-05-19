@@ -353,7 +353,11 @@ let lastFocusedCard = null;
 document.querySelectorAll('.pc').forEach(card => {
   const open = () => {
     lastFocusedCard = card;
-    openModal(Number(card.dataset.index));
+    if (window.innerWidth <= 640) {
+      openMobProject(Number(card.dataset.index));
+    } else {
+      openModal(Number(card.dataset.index));
+    }
   };
   card.addEventListener('click', open);
   card.addEventListener('keydown', e => {
@@ -440,6 +444,117 @@ contactModal.addEventListener('keydown', e => {
   } else {
     if (document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
+});
+
+
+/* ─── Mobile project page ───────────────────────────────────── */
+const mobProject               = document.getElementById('mobProject');
+const mobProjectBack           = document.getElementById('mobProjectBack');
+const mobProjectImg            = document.getElementById('mobProjectImg');
+const mobProjectVideo          = document.getElementById('mobProjectVideo');
+const mobProjectMoodboardBtn   = document.getElementById('mobProjectMoodboardBtn');
+const mobProjectCat            = document.getElementById('mobProjectCat');
+const mobProjectTitle          = document.getElementById('mobProjectTitle');
+const mobProjectDesc           = document.getElementById('mobProjectDesc');
+const mobProjectLocation       = document.getElementById('mobProjectLocation');
+const mobProjectFeaturesToggle = document.getElementById('mobProjectFeaturesToggle');
+const mobProjectFeaturesList   = document.getElementById('mobProjectFeaturesList');
+
+let currentMobProject = null;
+
+function mobSetDesignMode() {
+  mobProjectMoodboardBtn.setAttribute('aria-pressed', 'false');
+  mobProjectImg.src             = 'assets/coming-soon.png';
+  mobProjectImg.alt             = 'Coming Soon';
+  mobProjectImg.style.display   = 'block';
+  mobProjectVideo.style.display = 'none';
+  mobProjectVideo.src           = '';
+}
+
+function mobSetMoodboardMode(p) {
+  mobProjectMoodboardBtn.setAttribute('aria-pressed', 'true');
+  if (p.video) {
+    mobProjectVideo.src           = p.video;
+    mobProjectVideo.style.display = 'block';
+    mobProjectImg.style.display   = 'none';
+    mobProjectImg.src             = '';
+  } else {
+    mobProjectImg.src             = p.image;
+    mobProjectImg.alt             = p.title;
+    mobProjectImg.style.display   = 'block';
+    mobProjectVideo.style.display = 'none';
+    mobProjectVideo.src           = '';
+  }
+}
+
+mobProjectMoodboardBtn.addEventListener('click', () => {
+  const isActive = mobProjectMoodboardBtn.getAttribute('aria-pressed') === 'true';
+  if (isActive) {
+    mobSetDesignMode();
+  } else {
+    mobSetMoodboardMode(currentMobProject);
+  }
+});
+
+mobProjectFeaturesToggle.addEventListener('click', () => {
+  const isOpen = mobProjectFeaturesToggle.getAttribute('aria-expanded') === 'true';
+  if (isOpen) {
+    mobProjectFeaturesList.style.maxHeight = '0';
+    mobProjectFeaturesToggle.textContent = '+ Features';
+    mobProjectFeaturesToggle.setAttribute('aria-expanded', 'false');
+  } else {
+    mobProjectFeaturesList.style.maxHeight = mobProjectFeaturesList.scrollHeight + 'px';
+    mobProjectFeaturesToggle.textContent = '− Features';
+    mobProjectFeaturesToggle.setAttribute('aria-expanded', 'true');
+  }
+});
+
+function openMobProject(index) {
+  const p = PROJECTS[index];
+  if (!p) return;
+  currentMobProject = p;
+
+  mobProject.scrollTop = 0;
+
+  /* Start in design mode */
+  mobSetDesignMode();
+
+  /* Show moodboard button only if there's real content */
+  const hasMoodboard = !!(p.video || (p.image && !p.image.includes('coming-soon')));
+  if (hasMoodboard) {
+    mobProjectMoodboardBtn.removeAttribute('hidden');
+  } else {
+    mobProjectMoodboardBtn.setAttribute('hidden', '');
+  }
+
+  mobProjectCat.textContent      = p.category;
+  mobProjectTitle.textContent    = p.title;
+  mobProjectDesc.textContent     = p.desc;
+  mobProjectLocation.textContent = p.location;
+
+  mobProjectFeaturesList.innerHTML       = p.features.map(f => `<li>${f}</li>`).join('');
+  mobProjectFeaturesList.style.maxHeight = '0';
+  mobProjectFeaturesToggle.textContent   = '+ Features';
+  mobProjectFeaturesToggle.setAttribute('aria-expanded', 'false');
+
+  mobProject.classList.add('is-open');
+  mobProject.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobProject() {
+  mobProject.classList.remove('is-open');
+  mobProject.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  mobProjectVideo.src   = '';
+  currentMobProject     = null;
+  if (lastFocusedCard) lastFocusedCard.focus();
+}
+
+mobProjectBack.addEventListener('click', closeMobProject);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobProject.classList.contains('is-open')) closeMobProject();
 });
 
 

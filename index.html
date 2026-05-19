@@ -343,6 +343,37 @@
     </div>
   </div>
 
+  <!-- MOBILE PROJECT PAGE — Pinterest-style -->
+  <div class="mob-project" id="mobProject" aria-hidden="true">
+    <div class="mob-project__hero">
+      <button class="mob-project__back" id="mobProjectBack" aria-label="Volver">
+        <svg width="10" height="17" viewBox="0 0 10 17" fill="none" aria-hidden="true">
+          <path d="M9 1L1 8.5L9 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mob-project__media-wrap">
+        <img  class="mob-project__img"   id="mobProjectImg"   src="" alt="">
+        <video class="mob-project__video" id="mobProjectVideo" autoplay muted loop playsinline></video>
+        <button class="mob-project__moodboard-btn" id="mobProjectMoodboardBtn" aria-pressed="false" hidden>
+          <span class="mob-project__moodboard-dot" aria-hidden="true"></span>
+          Moodboard
+        </button>
+      </div>
+    </div>
+    <div class="mob-project__body">
+      <div class="mob-project__meta">
+        <span class="mob-project__cat"      id="mobProjectCat"></span>
+        <span class="mob-project__location" id="mobProjectLocation"></span>
+      </div>
+      <h2 class="mob-project__title" id="mobProjectTitle"></h2>
+      <p  class="mob-project__desc"  id="mobProjectDesc"></p>
+      <div class="mob-project__features">
+        <button class="mob-project__features-toggle" id="mobProjectFeaturesToggle" aria-expanded="false">+ Features</button>
+        <ul class="mob-project__features-list" id="mobProjectFeaturesList"></ul>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
